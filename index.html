@@ -50,13 +50,14 @@ h2{font-size:clamp(32px,5vw,55px);letter-spacing:-2px}
 .status div{border:1px solid #d8ddd5;border-radius:14px;padding:24px}
 .status strong{display:block;font-size:26px}
 .status span{color:#63706a;font-size:13px}
-.video{height:320px;background:#dce9df;border:1px dashed #9eaaa1;border-radius:20px;display:flex;align-items:center;justify-content:center;text-align:center;margin-top:30px}
-.play{font-size:50px;color:#0e4a3d}
+.video{height:320px;background:#dce9df;border:1px solid #9eaaa1;border-radius:20px;overflow:hidden;margin-top:30px}
+.video iframe{width:100%;height:100%;border:0;display:block}
+.video-fallback{margin-top:14px;font-size:13px}
+.video-fallback a{color:#0e4a3d;font-weight:700;text-decoration:none}
 .cta{background:#0e4a3d;color:white;margin:80px calc(-7%);padding:80px 7%}
 .cta .eyebrow{color:#b9d6c3}
 .cta p{color:#d7e2dc}
 footer{border-top:1px solid #d8ddd5;padding:25px 7%;display:flex;justify-content:space-between;color:#63706a;font-size:11px}
-
 @media(max-width:800px){
 header{padding:16px 5%}
 nav{display:none}
@@ -68,7 +69,6 @@ main{padding:0 5%}
 .stats{gap:22px;flex-wrap:wrap}
 .cta{margin-left:-5%;margin-right:-5%;padding:65px 5%}
 }
-
 @media(max-width:480px){
 .grid,.tech,.status{grid-template-columns:1fr}
 h1{font-size:43px}
@@ -77,9 +77,7 @@ h1{font-size:43px}
 }
 </style>
 </head>
-
 <body>
-
 <header>
 <div class="logo"><span>AFRISYX</span> LABS</div>
 <nav>
@@ -89,103 +87,75 @@ h1{font-size:43px}
 <a href="#prototype">Prototype</a>
 </nav>
 </header>
-
 <main>
-
 <section class="hero">
 <div>
 <p class="eyebrow">AGRI-TECH · N'DJAMENA, TCHAD</p>
-
 <h1>Turn soil measurements into <em>decision-ready data.</em></h1>
-
 <p class="lead">
 Agri-Scan Elite est une sonde connectée 7-en-1 conçue pour rendre les données de terrain plus faciles à mesurer, documenter, géolocaliser et exploiter dans les workflows agricoles.
 </p>
-
 <div class="buttons">
 <a class="btn primary" href="#prototype">Découvrir le prototype</a>
 <a class="btn secondary" href="#tech">Technologie</a>
 </div>
-
 <div class="stats">
 <div><strong>7</strong><span>paramètres mesurés</span></div>
 <div><strong>0–100</strong><span>Score-Sol conceptuel</span></div>
 <div><strong>2</strong><span>prototypes fonctionnels</span></div>
 </div>
 </div>
-
 <div class="visual">
 <div class="probe"></div>
 </div>
 </section>
-
-
 <section id="solution" class="section two">
-
 <div>
 <p class="eyebrow">LE PROBLÈME</p>
 <h2>Des décisions agricoles qui ont besoin de données de terrain mieux documentées.</h2>
 </div>
-
 <div class="muted">
 <p>
 Dans de nombreux contextes, l'appréciation de la qualité d'une parcelle repose encore sur des observations ponctuelles ou déclaratives.
 </p>
-
 <p>
 Agri-Scan Elite explore une approche instrumentée : mesurer les propriétés du sol, associer les mesures à une position et à un horodatage, puis conserver les données pour leur analyse.
 </p>
-
 <p>
 Le projet vise notamment les coopératives, institutions financières, assureurs et organismes de certification.
 </p>
 </div>
-
 </section>
-
-
 <section class="section">
-
 <p class="eyebrow">LE SYSTÈME</p>
 <h2>Mesurer → Localiser → Sécuriser → Exploiter</h2>
-
 <div class="grid">
-
 <div class="card">
 <b>01</b>
 <h3>Mesurer</h3>
 <p>Une sonde multi-paramètres collecte les données du sol sur le terrain.</p>
 </div>
-
 <div class="card">
 <b>02</b>
 <h3>Localiser</h3>
 <p>Le GPS associe les relevés à leur position et à leur contexte de collecte.</p>
 </div>
-
 <div class="card">
 <b>03</b>
 <h3>Sécuriser</h3>
 <p>Une identité matérielle permet d'explorer l'authentification des mesures et du dispositif.</p>
 </div>
-
 <div class="card">
 <b>04</b>
 <h3>Exploiter</h3>
 <p>Les données sont destinées à alimenter une application mobile et une plateforme de traitement.</p>
 </div>
-
 </div>
 </section>
-
-
 <section id="tech" class="section">
-
 <p class="eyebrow">ARCHITECTURE TECHNIQUE</p>
 <h2>Du capteur à la plateforme.</h2>
-
 <div class="grid tech">
-
 <div class="card"><h3>ESP32</h3><p>Contrôleur embarqué.</p></div>
 <div class="card"><h3>NEO-M8N</h3><p>Géolocalisation GPS.</p></div>
 <div class="card"><h3>ATECC508A</h3><p>Identité et sécurité matérielle.</p></div>
@@ -194,135 +164,83 @@ Le projet vise notamment les coopératives, institutions financières, assureurs
 <div class="card"><h3>PostgreSQL</h3><p>Stockage structuré.</p></div>
 <div class="card"><h3>KiCad</h3><p>Conception électronique.</p></div>
 <div class="card"><h3>OpenSCAD</h3><p>Boîtier prototype.</p></div>
-
 </div>
 </section>
-
-
 <section id="score" class="section">
-
 <div class="score">
-
 <p class="eyebrow">SCORE-SOL</p>
-
 <h2>Un indice propriétaire en cours de développement.</h2>
-
 <p>
 Score-Sol est un concept d'indice synthétique destiné à faciliter la lecture des données de terrain. Les mesures brutes restent disponibles pour les techniciens et agronomes.
 </p>
-
 <div class="notice">
 <strong>Important :</strong>
 le modèle de scoring est au stade prototype. Il devra être calibré et validé, notamment par comparaison avec des analyses de référence, avant toute utilisation agronomique ou financière certifiée.
 </div>
-
 </div>
-
 </section>
-
-
 <section id="prototype" class="section">
-
 <p class="eyebrow">ÉTAT DU PROJET</p>
-
 <h2>Un prototype réel, en phase de consolidation.</h2>
-
 <div class="status">
-
 <div>
 <strong>02</strong>
 <span>unités fonctionnelles construites</span>
 </div>
-
 <div>
 <strong>PCB</strong>
 <span>circuit imprimé en fabrication</span>
 </div>
-
 <div>
 <strong>APP</strong>
 <span>plateforme logicielle en développement</span>
 </div>
-
 <div>
 <strong>VALIDATION</strong>
 <span>mesures et modèle en cours de validation</span>
 </div>
-
 </div>
-
 </section>
-
-
 <section class="section">
-
 <p class="eyebrow">DÉMONSTRATION</p>
-
 <h2>Voir Agri-Scan Elite en action.</h2>
-
 <div class="video">
-<div>
-<div class="play">▶</div>
-<h3>VIDEO DEMO</h3>
-<p class="muted">Lien YouTube ou Google Drive à ajouter.</p>
+<iframe src="https://drive.google.com/file/d/1AQOP-pS0yg_5ZXeUnD4jeIj4_6JtiE6U/preview" allow="autoplay" allowfullscreen></iframe>
 </div>
-</div>
-
+<p class="video-fallback">La vidéo ne s'affiche pas ? <a href="https://drive.google.com/file/d/1AQOP-pS0yg_5ZXeUnD4jeIj4_6JtiE6U/view" target="_blank" rel="noopener">Voir la démo sur Google Drive ↗</a></p>
 </section>
-
-
 <section class="section">
-
 <p class="eyebrow">MODÈLE B2B2F</p>
-
 <h2>Une infrastructure de données au service des acteurs agricoles.</h2>
-
 <div class="grid">
-
 <div class="card">
 <b>INSTITUTIONS</b>
 <h3>Coopératives · banques · assureurs</h3>
 <p>Accéder à des données de parcelles structurées pour les workflows d'évaluation et de suivi.</p>
 </div>
-
 <div class="card">
 <b>TERRAIN</b>
 <h3>Techniciens · agents · agronomes</h3>
 <p>Collecter des mesures géolocalisées et horodatées dans un parcours documenté.</p>
 </div>
-
 <div class="card">
 <b>PRODUCTEURS</b>
 <h3>Une donnée mieux documentée</h3>
 <p>Faciliter l'accès aux dispositifs institutionnels grâce à une donnée de terrain structurée.</p>
 </div>
-
 </div>
 </section>
-
-
 <section class="cta">
-
 <p class="eyebrow">AFRISYX LABS</p>
-
 <h2>Des technologies pensées pour les réalités du terrain.</h2>
-
 <p>
 Agri-Scan Elite est développé à N'Djamena, Tchad, au sein d'AfriSyx Labs.
 </p>
-
-<a class="btn primary" href="https://github.com/Djerareou/agri-scan-elite" target="_blank">
-Voir le projet technique →
-</a>
-
 </section>
-
 </main>
-
 <footer>
 <span>© 2026 AfriSyx Labs</span>
 <span>Agri-Scan Elite · Prototype</span>
 </footer>
-
 </body>
 </html>
